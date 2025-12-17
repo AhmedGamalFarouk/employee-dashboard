@@ -1,0 +1,241 @@
+<div class="content-area">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <div class="page-header__text">
+                <h2 class="page-header__title">Current Employees</h2>
+                <p class="page-header__subtitle">Manage attendance, locations and status</p>
+            </div>
+            <div class="page-header__actions">
+                <div class="search-box">
+                    <span class="material-symbols-outlined search-box__icon">search</span>
+                    <input class="search-box__input" placeholder="Search employees by ID, name, branch..."
+                        type="text" />
+                </div>
+                <button class="btn btn--primary">
+                    <span class="material-symbols-outlined icon--lg">add</span>
+                    <span>Add Employee</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Employee Table -->
+        <div class="table-container">
+            <div class="table-scroll">
+                <table class="data-table">
+                    <thead class="data-table__header">
+                        <tr class="data-table__header-row">
+                            <th class="data-table__th">Employee</th>
+                            <th class="data-table__th">ID</th>
+                            <th class="data-table__th">Location</th>
+                            <th class="data-table__th data-table__th--center">Check-in</th>
+                            <th class="data-table__th data-table__th--center">Check-out</th>
+                            <th class="data-table__th">Status</th>
+                            <th class="data-table__th data-table__th--right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="data-table__body">
+                        <!-- Employee 1 -->
+                        <tr>
+                            <td class="data-table__td">
+                                <div class="employee-info">
+                                    <div class="avatar avatar--bordered"
+                                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDMnKFpaq_MEgzc1yCQIQHVs5khhmhQU61i0OdV7BXSuX5Oc7WXkFIY0TG-uIdykHMofPfJQXe2BftvYWUrtiG7VLLRQskTkXAh4SgvVji4lRgVae-yTdoGvOUA21M_Cpla-WFFfeZSn9zdgONTny3BKIYfh0vqFdebOxQPinnDjjBiQwYCCp3AdsjOA3BCtOCX2ZPv8UppYZhUnGUXIfQryjvq5xIZMyCqs-X_lOMMnAT2sZwP2Fy1d5RPoj9dE8A09W3fW3H0jcg8");'>
+                                    </div>
+                                    <div class="employee-info__details">
+                                        <span class="employee-info__name">Sarah Jenkins</span>
+                                        <span class="employee-info__role">Marketing Lead</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="data-table__td data-table__td--muted data-table__td--mono">#EMP-1024</td>
+                            <td class="data-table__td">
+                                <div class="location">
+                                    <span
+                                        class="material-symbols-outlined location__icon location__icon--blue">location_on</span>
+                                    <span>New York</span>
+                                </div>
+                            </td>
+                            <td class="data-table__td data-table__td--center">
+                                <div class="time-display">08:58 AM</div>
+                            </td>
+                            <td class="data-table__td data-table__td--center data-table__td--muted">--:--</td>
+                            <td class="data-table__td">
+                                <span class="status-badge status-badge--active">
+                                    <span class="status-badge__dot"></span>
+                                    Active
+                                </span>
+                            </td>
+                            <td class="data-table__td data-table__td--right">
+                                <button class="btn btn--icon">
+                                    <span class="material-symbols-outlined">more_vert</span>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Employee 2 -->
+                        <tr>
+                            <td class="data-table__td">
+                                <div class="employee-info">
+                                    <div class="avatar avatar--bordered-offline"
+                                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCsvXP9jd6tBuLOJV8reIFdZGPvLLpSozTzgmGCHp5V9ZesNWKjFYrlaxVj6eh-lCCWSXEgVs_sThKefEoWRayzT6J21htgFr4rRXxMrFXn0vj0q8yLC9iWe8peD4-3-JE8uA6lvMUb4Vi5fL4mjfU3-UprR9I3lUrLCuP_aSHlJ-x216INkkH84lH3YHWwJro-YZUj_HZhuDpDmtO8MUY_cdjomkqFkgJK78vD9yO5jX9c8V7iCJItzkoth80hQKy8xFfW8_HzVUmz");'>
+                                    </div>
+                                    <div class="employee-info__details">
+                                        <span class="employee-info__name">Michael Chen</span>
+                                        <span class="employee-info__role">Senior Developer</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="data-table__td data-table__td--muted data-table__td--mono">#EMP-1025</td>
+                            <td class="data-table__td">
+                                <div class="location">
+                                    <span
+                                        class="material-symbols-outlined location__icon location__icon--orange">location_on</span>
+                                    <span>San Francisco</span>
+                                </div>
+                            </td>
+                            <td class="data-table__td data-table__td--center data-table__td--muted">09:15 AM</td>
+                            <td class="data-table__td data-table__td--center data-table__td--muted">05:30 PM</td>
+                            <td class="data-table__td">
+                                <span class="status-badge status-badge--offline">Offline</span>
+                            </td>
+                            <td class="data-table__td data-table__td--right">
+                                <button class="btn btn--icon">
+                                    <span class="material-symbols-outlined">more_vert</span>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Employee 3 -->
+                        <tr>
+                            <td class="data-table__td">
+                                <div class="employee-info">
+                                    <div class="avatar avatar--bordered"
+                                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuvZn8EGDC_yScHERCz3w49WNaQzMHbUtQNLDP1iSsdjSuGys2A-JlKCQ8g3UNvTcU2KZ4IIfdetZo_J14ND9K6b-gesIx2rVrkJF5vse4woKz6p-1IhAiEv-rDlrjSnS6QN8ZlSYkPPZCGL1mlqziRtAaq0_55siS5u2DwOsM5fl40ZGDDui_lq_v0jyJ9YuaqbYnNNPlaTFkH0ictk6DKW2ah7ZNSKCjX8kaob_UnTFV-8vjwWRYUrHzmDfVLmMhbmN4Wp_bQ16J");'>
+                                    </div>
+                                    <div class="employee-info__details">
+                                        <span class="employee-info__name">Emily Davis</span>
+                                        <span class="employee-info__role">HR Manager</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="data-table__td data-table__td--muted data-table__td--mono">#EMP-1042</td>
+                            <td class="data-table__td">
+                                <div class="location">
+                                    <span
+                                        class="material-symbols-outlined location__icon location__icon--purple">location_on</span>
+                                    <span>London (Remote)</span>
+                                </div>
+                            </td>
+                            <td class="data-table__td data-table__td--center">
+                                <div class="time-display">08:45 AM</div>
+                            </td>
+                            <td class="data-table__td data-table__td--center data-table__td--muted">--:--</td>
+                            <td class="data-table__td">
+                                <span class="status-badge status-badge--active">
+                                    <span class="status-badge__dot"></span>
+                                    Active
+                                </span>
+                            </td>
+                            <td class="data-table__td data-table__td--right">
+                                <button class="btn btn--icon">
+                                    <span class="material-symbols-outlined">more_vert</span>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Employee 4 -->
+                        <tr>
+                            <td class="data-table__td">
+                                <div class="employee-info">
+                                    <div class="avatar avatar--bordered"
+                                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdgO37XTV533Ap4n4oEO8ualZ7D_7oOUzYEdi1i9dKlP7OKng0pIlahyzSYZ9SJVAOqJIR9HTYe_p9wOmTIGsjwOIZS3Dqw8F3AlV--NM9BeqouCsGsJNvSlPxlAaEgM40RfB64pgdz6rb42qqlcm_zu_KDkFKfCNr2hwvYKC0DFseqBSM-GXQaI4nee0VpeajtsROByaTGTPI2CAj8DIEUspZfGfsdNFiJ38zVFsRvfAyjAHK7wzBP1eKVHpotjpjpcfmRZLUdSvF");'>
+                                    </div>
+                                    <div class="employee-info__details">
+                                        <span class="employee-info__name">David Wilson</span>
+                                        <span class="employee-info__role">Logistics Coordinator</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="data-table__td data-table__td--muted data-table__td--mono">#EMP-1088</td>
+                            <td class="data-table__td">
+                                <div class="location">
+                                    <span
+                                        class="material-symbols-outlined location__icon location__icon--blue">location_on</span>
+                                    <span>New York</span>
+                                </div>
+                            </td>
+                            <td class="data-table__td data-table__td--center">
+                                <div class="time-display">09:02 AM</div>
+                            </td>
+                            <td class="data-table__td data-table__td--center data-table__td--muted">--:--</td>
+                            <td class="data-table__td">
+                                <span class="status-badge status-badge--active">
+                                    <span class="status-badge__dot"></span>
+                                    Active
+                                </span>
+                            </td>
+                            <td class="data-table__td data-table__td--right">
+                                <button class="btn btn--icon">
+                                    <span class="material-symbols-outlined">more_vert</span>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Employee 5 -->
+                        <tr>
+                            <td class="data-table__td">
+                                <div class="employee-info">
+                                    <div class="avatar avatar--bordered-leave"
+                                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD84y9_msQlJPbTKqg2V2X7fUzW0kOX__VVbOJvuTx15rSRTkKMY8GEpBCFUOp-yQ2cLYjmuevYV-5cqRi-HCNuyFVv75B3QgFtM9uBn91M8iDQCXwQvR3AnsqDUyv9AH93LCXycWXZqzGglFaxGdmpD8oi8PmHy7vHn6p8IDeW-T6d45hezafDMZKf7t7un9AO94TPuxyzQ4Bgvqk0M6U9sTVMY9S9-GSvG7mR7lrb5gc9wkPSFzqiJ6Hl5EOrLx71cwZy_HZe8Uvr");'>
+                                    </div>
+                                    <div class="employee-info__details">
+                                        <span class="employee-info__name">Jessica Lee</span>
+                                        <span class="employee-info__role">Product Designer</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="data-table__td data-table__td--muted data-table__td--mono">#EMP-1090</td>
+                            <td class="data-table__td">
+                                <div class="location">
+                                    <span
+                                        class="material-symbols-outlined location__icon location__icon--orange">location_on</span>
+                                    <span>San Francisco</span>
+                                </div>
+                            </td>
+                            <td class="data-table__td data-table__td--center data-table__td--muted">--:--</td>
+                            <td class="data-table__td data-table__td--center data-table__td--muted">--:--</td>
+                            <td class="data-table__td">
+                                <span class="status-badge status-badge--leave">On Leave</span>
+                            </td>
+                            <td class="data-table__td data-table__td--right">
+                                <button class="btn btn--icon">
+                                    <span class="material-symbols-outlined">more_vert</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <p class="pagination__info">
+                Showing <span class="pagination__highlight">1-5</span> of <span class="pagination__highlight">48</span>
+                employees
+            </p>
+            <div class="pagination__controls">
+                <button class="btn--pagination" disabled>
+                    <span class="material-symbols-outlined icon--sm">chevron_left</span>
+                </button>
+                <button class="btn--pagination btn--pagination--active">1</button>
+                <button class="btn--pagination">2</button>
+                <button class="btn--pagination">3</button>
+                <span class="pagination__ellipsis">...</span>
+                <button class="btn--pagination">
+                    <span class="material-symbols-outlined icon--sm">chevron_right</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

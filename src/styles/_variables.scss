@@ -1,0 +1,115 @@
+// =============================================================================
+// Variables - Design Tokens and Configuration
+// =============================================================================
+
+// =============================================================================
+// CSS Custom Properties for Theme Switching
+// =============================================================================
+:root {
+    // Sidebar width
+    --sidebar-width: 18rem;
+    --sidebar-collapsed-width: 4.5rem;
+
+    // Default theme is dark
+    --background: #0A1D3A;
+    --surface: #152B4D;
+    --primary: #4FC3F7;
+    --primary-content: #000000;
+    --text: #E0F2F7;
+    --text-muted: #90CAF9;
+    --border: #2A466F;
+    --table-row-hover: #1A345E;
+
+    // Status Colors
+    --status-active: #4ADE80; // distinct green
+    --status-offline: #64B5F6;
+    --status-leave: #FFCA28;
+
+    // Location Colors
+    --location-blue: #60A5FA;
+    --location-orange: #FB923C;
+    --location-purple: #A78BFA;
+
+    // Shadows
+    --shadow-primary: 0 0 15px rgba(79, 195, 247, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+// Light Theme
+:root[data-theme="light"] {
+    --background: #F0F4F8;
+    --surface: #FFFFFF;
+    --primary: #0288D1;
+    --primary-content: #FFFFFF;
+    --text: #1A1A2E;
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+    --table-row-hover: #F8FAFC;
+
+    // Status Colors (slightly darker for light mode)
+    --status-active: #16A34A; // distinct green
+    --status-offline: #42A5F5;
+    --status-leave: #F59E0B;
+
+    // Location Colors
+    --location-blue: #3B82F6;
+    --location-orange: #F97316;
+    --location-purple: #8B5CF6;
+
+    // Shadows
+    --shadow-primary: 0 0 15px rgba(2, 136, 209, 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+// =============================================================================
+// SCSS Variables (for use in calculations and functions)
+// =============================================================================
+
+// Color Palette - Using CSS variables
+$background-dark: var(--background);
+$surface-dark: var(--surface);
+$surface-light: var(--surface);
+$primary: var(--primary);
+$primary-content: var(--primary-content);
+$text-light: var(--text);
+$text-muted: var(--text-muted);
+$border-dark: var(--border);
+$table-row-hover: var(--table-row-hover);
+
+// Status Colors
+$status-active: var(--status-active);
+$status-offline: var(--status-offline);
+$status-leave: var(--status-leave);
+
+// Location Colors
+$location-blue: var(--location-blue);
+$location-orange: var(--location-orange);
+$location-purple: var(--location-purple);
+
+// Typography
+$font-family-display: 'Manrope', sans-serif;
+
+// Border Radius - Less circular values
+$border-radius-sm: 0.25rem; // 4px
+$border-radius-md: 0.5rem; // 8px - reduced from 1rem
+$border-radius-lg: 0.75rem; // 12px - reduced from 2rem
+$border-radius-xl: 1rem; // 16px - reduced from 3rem
+$border-radius-full: 9999px; // Fully rounded (for pills/avatars)
+
+// Spacing
+$spacing-1: 0.25rem;
+$spacing-2: 0.5rem;
+$spacing-3: 0.75rem;
+$spacing-4: 1rem;
+$spacing-5: 1.25rem;
+$spacing-6: 1.5rem;
+$spacing-8: 2rem;
+
+// Shadows
+$shadow-primary: var(--shadow-primary);
+$shadow-lg: var(--shadow-lg);
+
+// Transitions
+$transition-colors: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+$transition-all: all 0.2s ease;
+$transition-sidebar: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

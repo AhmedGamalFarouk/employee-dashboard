@@ -1,0 +1,91 @@
+// =============================================================================
+// Table Styles - Data Table Component
+// =============================================================================
+
+@use 'variables' as *;
+
+// Table Container
+.table-container {
+    width: 100%;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $border-radius-lg; // Less circular border radius (12px)
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+// Base Table
+.data-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+// Table Header
+.data-table__header {
+    background-color: var(--primary);
+    border-bottom: 1px solid var(--border);
+}
+
+.data-table__header-row {
+    color: var(--primary-content);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.data-table__th {
+    padding: $spacing-4 $spacing-6;
+    font-weight: 700;
+
+    &--center {
+        text-align: center;
+    }
+
+    &--right {
+        text-align: right;
+    }
+}
+
+// Table Body
+.data-table__body {
+    font-size: 0.875rem;
+
+    tr {
+        transition: $transition-colors;
+
+        &:hover td {
+            background-color: var(--table-row-hover);
+        }
+    }
+
+    tr:not(:last-child) {
+        border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+    }
+}
+
+.data-table__td {
+    padding: $spacing-4 $spacing-6;
+
+    &--muted {
+        color: var(--text-muted);
+    }
+
+    &--mono {
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+
+    &--center {
+        text-align: center;
+    }
+
+    &--right {
+        text-align: right;
+    }
+}

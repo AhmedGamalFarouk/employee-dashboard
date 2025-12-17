@@ -1,0 +1,308 @@
+<div class="content-area">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <div class="page-header__text">
+                <h2 class="page-header__title">Warehouse Inventory</h2>
+                <p class="page-header__subtitle">Manage and track warehouse stock levels</p>
+            </div>
+        </div>
+
+        <!-- Add Item Modal -->
+        @if (showModal) {
+        <div class="modal-overlay" (click)="onOverlayClick($event)">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3 class="modal-title">
+                        <span class="material-symbols-outlined">add_box</span>
+                        Add New Item
+                    </h3>
+                    <button class="modal-close" (click)="closeModal()">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <form class="modal-form">
+                    <div class="form-group">
+                        <label class="form-label">Buy order ID</label>
+                        <input type="text" class="search-box__input form-input" placeholder="PO-2023-001">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Addition Type</label>
+                        <div class="select-wrapper">
+                            <select class="search-box__input form-input form-select">
+                                <option value="" disabled selected>Select Addition Type...</option>
+                                <option>New Purchase</option>
+                                <option>Stock Return</option>
+                                <option>Transfer In</option>
+                                <option>Production</option>
+                                <option>Adjustment</option>
+                            </select>
+                            <span class="material-symbols-outlined select-icon">arrow_drop_down</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Supplier</label>
+                        <div class="select-wrapper">
+                            <select class="search-box__input form-input form-select">
+                                <option value="" disabled selected>Select Supplier...</option>
+                                <option>Supplier A</option>
+                                <option>Supplier B</option>
+                                <option>Supplier C</option>
+                                <option>Supplier D</option>
+                            </select>
+                            <span class="material-symbols-outlined select-icon">arrow_drop_down</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Item Category</label>
+                        <div class="select-wrapper">
+                            <select class="search-box__input form-input form-select">
+                                <option value="" disabled selected>Select Category...</option>
+                                <option>Raw Material</option>
+                                <option>Office Supplies</option>
+                                <option>Medicines</option>
+                                <option>Equipment</option>
+                                <option>Consumables</option>
+                            </select>
+                            <span class="material-symbols-outlined select-icon">arrow_drop_down</span>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="modal-footer">
+                    <button class="btn btn--secondary" (click)="closeModal()">Cancel</button>
+                    <button class="btn btn--primary" (click)="closeModal()">Add Item</button>
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Item Info Modal -->
+        @if (showInfoModal && selectedItem) {
+        <div class="modal-overlay" (click)="onInfoOverlayClick($event)">
+            <div class="modal-container modal-container--large">
+                <div class="modal-header">
+                    <h3 class="modal-title">
+                        <span class="material-symbols-outlined">info</span>
+                        Item Details
+                    </h3>
+                    <button class="modal-close" (click)="closeInfoModal()">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <form class="modal-form modal-form--grid">
+                    <div class="form-group">
+                        <label class="form-label">Item Name</label>
+                        <input type="text" class="search-box__input form-input" [(ngModel)]="selectedItem.itemName"
+                            name="itemName">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Unit</label>
+                        <div class="select-wrapper">
+                            <select class="search-box__input form-input form-select" [(ngModel)]="selectedItem.unit"
+                                name="unit">
+                                <option value="meter">Meter</option>
+                                <option value="piece">Piece</option>
+                                <option value="kg">Kilogram</option>
+                                <option value="liter">Liter</option>
+                                <option value="box">Box</option>
+                            </select>
+                            <span class="material-symbols-outlined select-icon">arrow_drop_down</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Color</label>
+                        <input type="text" class="search-box__input form-input" [(ngModel)]="selectedItem.color"
+                            name="color">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Length</label>
+                        <input type="number" class="search-box__input form-input" [(ngModel)]="selectedItem.length"
+                            name="length">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Width</label>
+                        <input type="number" class="search-box__input form-input" [(ngModel)]="selectedItem.width"
+                            name="width">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Content</label>
+                        <input type="text" class="search-box__input form-input" [(ngModel)]="selectedItem.content"
+                            name="content">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Type</label>
+                        <input type="text" class="search-box__input form-input" [(ngModel)]="selectedItem.type"
+                            name="type">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Surface</label>
+                        <input type="text" class="search-box__input form-input" [(ngModel)]="selectedItem.surface"
+                            name="surface">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Height</label>
+                        <input type="number" class="search-box__input form-input" [(ngModel)]="selectedItem.height"
+                            name="height">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Weight</label>
+                        <input type="number" class="search-box__input form-input" [(ngModel)]="selectedItem.weight"
+                            name="weight" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Global Code</label>
+                        <input type="text" class="search-box__input form-input" [(ngModel)]="selectedItem.globalCode"
+                            name="globalCode">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Brand</label>
+                        <input type="text" class="search-box__input form-input" [(ngModel)]="selectedItem.brand"
+                            name="brand">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Order Limit</label>
+                        <input type="number" class="search-box__input form-input"
+                            [(ngModel)]="selectedItem.reorderLevel" name="reorderLevel">
+                    </div>
+
+                    <div class="form-group form-group--full">
+                        <label class="form-label">Notes</label>
+                        <textarea class="search-box__input form-input form-textarea" [(ngModel)]="selectedItem.notes"
+                            name="notes" rows="3"></textarea>
+                    </div>
+                </form>
+
+                <div class="modal-footer">
+                    <button class="btn btn--secondary" (click)="closeInfoModal()">Cancel</button>
+                    <button class="btn btn--primary" (click)="saveItemInfo()">
+                        <span class="material-symbols-outlined icon--sm">save</span>
+                        Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Inventory Management Panel -->
+        <div class="inventory-panel">
+            <div class="panel-header">
+                <div class="panel-header__left">
+                    <span class="material-symbols-outlined panel-icon">inventory_2</span>
+                    <div class="panel-header__text">
+                        <h3 class="panel-title">Stock Management</h3>
+                        <p class="panel-subtitle">Click rows or drag to select multiple</p>
+                    </div>
+                </div>
+                <div class="panel-header__actions">
+                    <button class="btn btn--primary btn--sm" (click)="openModal()">
+                        <span class="material-symbols-outlined icon--sm">add</span>
+                        <span>Add Item</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table-container">
+                <div class="table-scroll">
+                    <table class="data-table">
+                        <thead class="data-table__header">
+                            <tr class="data-table__header-row">
+                                <th class="data-table__th data-table__th--checkbox">
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox" [checked]="selectAll" (change)="toggleAll()">
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                </th>
+                                <th class="data-table__th">ID</th>
+                                <th class="data-table__th">Item Name</th>
+                                <th class="data-table__th data-table__th--center">Required Qty</th>
+                                <th class="data-table__th data-table__th--center">Unit</th>
+                                <th class="data-table__th data-table__th--center">Available Qty</th>
+                                <th class="data-table__th data-table__th--center">Unit</th>
+                                <th class="data-table__th data-table__th--center">Status</th>
+                                <th class="data-table__th data-table__th--center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="data-table__body">
+                            @for (item of items; track item.id) {
+                            <tr class="data-table__row" [class.data-table__row--selected]="item.selected"
+                                (click)="toggleItem(item)">
+                                <td class="data-table__td data-table__td--checkbox">
+                                    <label class="checkbox-wrapper" (click)="$event.stopPropagation()">
+                                        <input type="checkbox" [checked]="item.selected" (change)="toggleItem(item)">
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                </td>
+                                <td class="data-table__td data-table__td--mono">{{ item.id }}</td>
+                                <td class="data-table__td data-table__td--primary">{{ item.itemName }}</td>
+                                <td class="data-table__td data-table__td--center">{{ item.requiredQty }}</td>
+                                <td class="data-table__td data-table__td--center data-table__td--muted">{{
+                                    item.requiredUnit }}</td>
+                                <td class="data-table__td data-table__td--center">{{ item.availableQty }}</td>
+                                <td class="data-table__td data-table__td--center data-table__td--muted">{{
+                                    item.availableUnit }}</td>
+                                <td class="data-table__td data-table__td--center">
+                                    <span class="status-badge status-badge--{{ getStockStatus(item) }}">
+                                        @if (getStockStatus(item) === 'sufficient') {
+                                        <span class="material-symbols-outlined icon--xs">check_circle</span>
+                                        Sufficient
+                                        } @else if (getStockStatus(item) === 'low') {
+                                        <span class="material-symbols-outlined icon--xs">warning</span>
+                                        Low Stock
+                                        } @else {
+                                        <span class="material-symbols-outlined icon--xs">error</span>
+                                        Critical
+                                        }
+                                    </span>
+                                </td>
+                                <td class="data-table__td data-table__td--center">
+                                    <button class="btn-icon" (click)="openInfoModal(item, $event)" title="View Details">
+                                        <span class="material-symbols-outlined">info</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Table Footer -->
+            <div class="table-footer">
+                <div class="table-footer__info">
+                    Showing <span class="highlight">{{ items.length }}</span> items
+                    @if (selectedCount > 0) {
+                    · <span class="highlight">{{ selectedCount }}</span> selected
+                    }
+                </div>
+                <div class="table-footer__actions">
+                    <button class="btn btn--ghost btn--sm" [disabled]="selectedCount === 0">
+                        <span class="material-symbols-outlined icon--sm">delete</span>
+                        Delete
+                    </button>
+                    <button class="btn btn--ghost btn--sm" [disabled]="selectedCount === 0">
+                        <span class="material-symbols-outlined icon--sm">edit</span>
+                        Edit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
