@@ -201,24 +201,17 @@
         }
 
         <!-- Inventory Management Panel -->
-        <div class="inventory-panel">
-            <div class="panel-header">
-                <div class="panel-header__left">
-                    <span class="material-symbols-outlined panel-icon">inventory_2</span>
-                    <div class="panel-header__text">
-                        <h3 class="panel-title">Stock Management</h3>
-                        <p class="panel-subtitle">Click rows or drag to select multiple</p>
-                    </div>
-                </div>
-                <div class="panel-header__actions">
-                    <button class="btn btn--primary btn--sm" (click)="openModal()">
-                        <span class="material-symbols-outlined icon--sm">add</span>
-                        <span>Add Item</span>
-                    </button>
-                </div>
-            </div>
+        <ui-data-table title="Stock Management" subtitle="Click rows or drag to select multiple" icon="inventory_2"
+            searchPlaceholder="Search items..." [showPagination]="false">
+            <!-- Header Actions -->
+            <ng-template #headerActions>
+                <button class="btn btn--primary btn--sm" (click)="openModal()">
+                    <span class="material-symbols-outlined icon--sm">add</span>
+                    <span>Add Item</span>
+                </button>
+            </ng-template>
 
-            <!-- Table -->
+            <!-- Table Content -->
             <div class="table-container">
                 <div class="table-scroll">
                     <table class="data-table">
@@ -284,8 +277,8 @@
                 </div>
             </div>
 
-            <!-- Table Footer -->
-            <div class="table-footer">
+            <!-- Footer Actions -->
+            <ng-template #footerActions>
                 <div class="table-footer__info">
                     Showing <span class="highlight">{{ items.length }}</span> items
                     @if (selectedCount > 0) {
@@ -302,7 +295,7 @@
                         Edit
                     </button>
                 </div>
-            </div>
-        </div>
+            </ng-template>
+        </ui-data-table>
     </div>
 </div>

@@ -1,117 +1,25 @@
-@use '../../styles/variables' as *;
+// =============================================================================
+// Buy Orders Component Styles
+// =============================================================================
+// Component-specific styles only. Uses:
+// - Global tokens from _global-tokens.scss
+// - Shared UI components from src/app/shared/ui/
+// =============================================================================
 
-// Modal Styles
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: $spacing-4;
-    animation: fadeIn 0.2s ease-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px) scale(0.95);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.modal-container {
-    background: var(--surface);
-    padding: $spacing-6;
-    border-radius: $border-radius-lg;
-    border: 1px solid var(--border);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-    animation: slideIn 0.3s ease-out;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: $spacing-6;
-    padding-bottom: $spacing-4;
-    border-bottom: 1px solid var(--border);
-}
-
-.modal-close {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: $spacing-2;
-    border-radius: $border-radius-md;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-
-    &:hover {
-        background: var(--border);
-        color: var(--text);
-    }
-}
-
-.modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: $spacing-3;
-    margin-top: $spacing-6;
-    padding-top: $spacing-4;
-    border-top: 1px solid var(--border);
-}
-
-.btn--secondary {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
-
-    &:hover {
-        background: var(--border);
-        border-color: var(--text-muted);
-    }
-}
-
+// Buy-order specific form container
 .form-container {
-    background: var(--surface);
-    padding: $spacing-6;
-    border-radius: $border-radius-lg;
-    border: 1px solid var(--border);
-    margin-bottom: $spacing-6;
+    background: var(--bg-surface);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    margin-bottom: var(--space-6);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .form-header {
-    margin-bottom: $spacing-6;
-    padding-bottom: $spacing-4;
-    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .form-title {
@@ -119,50 +27,71 @@
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: $spacing-2;
-    color: var(--primary);
+    gap: var(--space-2);
+    color: var(--action-primary);
 
     .material-symbols-outlined {
-        color: var(--primary);
+        color: var(--action-primary);
     }
 }
 
 .buy-order-form {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: $spacing-4;
+    gap: var(--space-4);
 
     @media (min-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
+// Form elements (local to this component)
 .form-group {
     display: flex;
     flex-direction: column;
-}
+    gap: var(--space-2);
 
-.form-group--full {
-    grid-column: 1 / -1;
+    &--full {
+        grid-column: 1 / -1;
+    }
 }
 
 .form-label {
     display: block;
-    margin-bottom: 0.5rem;
     color: var(--text-muted);
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
 }
 
 .form-input {
     width: 100%;
-    // Inherits styles from .search-box__input in global styles but we refine slightly here
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.9375rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &::placeholder {
+        color: var(--text-muted);
+    }
+
+    &:focus {
+        border-color: var(--action-primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
 }
 
 .form-select {
     appearance: none;
-    -webkit-appearance: none;
     cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-3) center;
+    padding-right: var(--space-8);
 }
 
 .select-wrapper {
@@ -172,19 +101,20 @@
 
 .select-icon {
     position: absolute;
-    right: $spacing-2;
+    right: var(--space-3);
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
     color: var(--text-muted);
 }
 
+// Radio group specific to buy orders
 .radio-group {
     display: flex;
-    gap: $spacing-6;
+    gap: var(--space-6);
     align-items: center;
     height: 3rem;
-    padding: 0 $spacing-2;
+    padding: 0 var(--space-2);
 }
 
 .radio-label {
@@ -193,21 +123,20 @@
     gap: 0.5rem;
     cursor: pointer;
     font-weight: 500;
-    color: var(--text);
+    color: var(--text-primary);
 
     input[type="radio"] {
-        accent-color: var(--primary);
+        accent-color: var(--action-primary);
         width: 1.125rem;
         height: 1.125rem;
     }
 }
 
-
 // Split Layout
 .split-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: $spacing-6;
+    gap: var(--space-6);
 
     @media (min-width: 1024px) {
         grid-template-columns: 280px 1fr;
@@ -216,33 +145,26 @@
 
 // Categories Panel
 .categories-panel {
-    background: var(--surface);
-    padding: $spacing-6;
-    border-radius: $border-radius-lg;
-    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
     height: fit-content;
-}
-
-.panel-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin-bottom: $spacing-4;
-    color: var(--text);
 }
 
 .category-list {
     display: flex;
     flex-direction: column;
-    gap: $spacing-3;
+    gap: var(--space-3);
 }
 
 .category-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $spacing-3 $spacing-4;
-    border-radius: $border-radius-md;
-    border: 1px solid var(--border);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
     cursor: pointer;
     font-weight: 500;
     transition: all 0.2s;
@@ -254,90 +176,53 @@
     }
 
     &:hover {
-        background: var(--border);
-        color: var(--primary);
-        border-color: var(--primary-light); // Assuming availability or use opacity
+        background: var(--border-color);
+        color: var(--action-primary);
+        border-color: var(--action-primary);
 
         .icon-sm {
-            color: var(--primary);
+            color: var(--action-primary);
         }
     }
 
     &--active {
-        background: rgba(59, 130, 246, 0.1); // Fallback or use var
-        border-color: var(--primary);
-        color: var(--primary);
+        background: rgba(59, 130, 246, 0.1);
+        border-color: var(--action-primary);
+        color: var(--action-primary);
 
         .icon-sm {
-            color: var(--primary);
+            color: var(--action-primary);
         }
     }
 }
-
-
 
 // Right Panel Wrapper
 .right-panel-wrapper {
     display: flex;
     flex-direction: column;
-    gap: $spacing-6;
-    min-width: 0; // Prevent flex item overflow
+    gap: var(--space-6);
+    min-width: 0;
 }
 
 // Items Panel
 .items-panel {
-    background: var(--surface);
-    padding: $spacing-6;
-    border-radius: $border-radius-lg;
-    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    gap: $spacing-6;
+    gap: var(--space-6);
 }
 
-.panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: $spacing-4;
-}
-
-.panel-header__text {
-    display: flex;
-    align-items: center;
-    gap: $spacing-2;
-
-    .header-icon {
-        color: var(--primary);
-    }
-
-    .panel-title {
-        margin-bottom: 0;
-    }
-}
-
-
-// Filters
+// Filters Row (buy-orders specific)
 .filters-row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: $spacing-4;
+    gap: var(--space-4);
 
     @media (min-width: 1024px) {
         grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-    }
-}
-
-.filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.filter-group--search {
-    @media (min-width: 768px) {
-        grid-column: span 1; // Or span 2 depending on preference
     }
 }
 
@@ -354,7 +239,7 @@
 
 .search-icon {
     position: absolute;
-    left: $spacing-3;
+    left: var(--space-3);
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-muted);
@@ -364,25 +249,13 @@
 .filter-input {
     width: 100%;
     height: 2.5rem;
-    padding-left: $spacing-3;
-    padding-right: $spacing-3;
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
     font-size: 0.8125rem;
     text-align: center;
-
-    &.search-box__input {
-        // Override global search box padding for the filters
-        padding-left: $spacing-3;
-    }
 }
 
 .filter-group--search .filter-input {
-    padding-left: 2rem; // Space for icon
+    padding-left: 2rem;
     text-align: left;
-}
-
-// Table Adjustments
-.table-container {
-    border: 1px solid var(--border);
-    border-radius: $border-radius-md;
-    overflow: hidden;
 }

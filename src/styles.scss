@@ -1,22 +1,25 @@
 // =============================================================================
-// Main Styles Entry Point
+// Main Styles Entry Point - Simplified Architecture
 // =============================================================================
-// This file imports all SCSS partials in the correct order.
-// Order matters: variables first, then base, then layout, then components.
+// This file imports only essential global styles.
+// Component-specific styles are now encapsulated in Angular components.
+// See src/app/shared/ui/ for reusable UI components.
 // =============================================================================
 
-// 1. Variables - Design tokens and configuration
-@use 'styles/variables' as *;
-// @use 'styles/global-tokens' as *;
+// 1. Global Tokens - CSS custom properties (design system foundation)
+@use 'styles/global-tokens';
 
-// 2. Base - Reset and global defaults
+// 2. Base - Reset, typography, scrollbars
 @use 'styles/base';
 
-// 3. Layout - Page structure and grid
+// 3. Layout - App shell, sidebar, navigation
 @use 'styles/layout';
 
-// 4. Components - Reusable UI elements
-@use 'styles/components';
-
-// 5. Table - Data table component
+// 4. Table - Data table component (shared globally for j-table)
 @use 'styles/table';
+
+// 5. Utilities - Atomic utility classes (load last for override capability)
+@use 'styles/utilities';
+
+// 6. Global Patterns - Small reusable patterns not yet converted to components
+@use 'styles/patterns';

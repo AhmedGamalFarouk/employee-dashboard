@@ -3,9 +3,30 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
+// Import UI components with ViewEncapsulation.None to make their styles globally available
+import { ButtonComponent } from './shared/ui/button/button';
+import { PanelComponent } from './shared/ui/panel/panel';
+import { ModalComponent } from './shared/ui/modal/modal';
+import { FormFieldComponent } from './shared/ui/form-field/form-field';
+import { StatusBadgeComponent } from './shared/ui/status-badge/status-badge';
+import { DataTableComponent } from './shared/ui/data-table/data-table';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, RouterLink, RouterLinkActive, TranslateModule],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    RouterLink,
+    RouterLinkActive,
+    TranslateModule,
+    // UI components (styles loaded globally via ViewEncapsulation.None)
+    ButtonComponent,
+    PanelComponent,
+    ModalComponent,
+    FormFieldComponent,
+    StatusBadgeComponent,
+    DataTableComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

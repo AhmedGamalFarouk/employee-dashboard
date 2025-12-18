@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DataTableComponent } from '../shared/ui/data-table/data-table';
 
 interface WarehouseItem {
     id: number;
@@ -26,7 +27,7 @@ interface WarehouseItem {
 
 @Component({
     selector: 'app-warehouse',
-    imports: [FormsModule],
+    imports: [FormsModule, DataTableComponent],
     templateUrl: './warehouse.html',
     styleUrl: './warehouse.scss',
 })

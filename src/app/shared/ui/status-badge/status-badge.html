@@ -1,0 +1,9 @@
+<span [class]="badgeClasses">
+    @if (showDot) {
+    <span class="status-badge__dot"></span>
+    }
+    @if (icon) {
+    <span class="material-symbols-outlined status-badge__icon">{{ icon }}</span>
+    }
+    <ng-content></ng-content>
+</span>

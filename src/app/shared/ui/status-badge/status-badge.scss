@@ -1,0 +1,124 @@
+// =============================================================================
+// Status Badge Component Styles (Global via ViewEncapsulation.None)
+// =============================================================================
+// These styles are globally available. Use with:
+// - <ui-status-badge> component
+// - Native HTML: <span class="status-badge status-badge--success">
+// =============================================================================
+
+ui-status-badge {
+    display: inline-block;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    width: fit-content;
+
+    // =========================================================================
+    // Employee Status Variants
+    // =========================================================================
+
+    &--active {
+        background-color: color-mix(in srgb, var(--status-active) 15%, transparent);
+        color: var(--status-active);
+        border: 1px solid color-mix(in srgb, var(--status-active) 30%, transparent);
+    }
+
+    &--offline {
+        background-color: color-mix(in srgb, var(--status-offline) 15%, transparent);
+        color: var(--status-offline);
+        border: 1px solid color-mix(in srgb, var(--status-offline) 30%, transparent);
+    }
+
+    &--leave {
+        background-color: color-mix(in srgb, var(--status-leave) 15%, transparent);
+        color: var(--status-leave);
+        border: 1px solid color-mix(in srgb, var(--status-leave) 30%, transparent);
+    }
+
+    // =========================================================================
+    // General Status Variants (using global tokens)
+    // =========================================================================
+
+    &--sufficient,
+    &--success,
+    &--completed {
+        background-color: color-mix(in srgb, var(--color-success) 15%, transparent);
+        color: var(--color-success);
+        border: 1px solid color-mix(in srgb, var(--color-success) 30%, transparent);
+    }
+
+    &--low,
+    &--warning,
+    &--pending {
+        background-color: color-mix(in srgb, var(--color-warning) 15%, transparent);
+        color: var(--color-warning);
+        border: 1px solid color-mix(in srgb, var(--color-warning) 30%, transparent);
+    }
+
+    &--critical,
+    &--error,
+    &--cancelled {
+        background-color: color-mix(in srgb, var(--color-error) 15%, transparent);
+        color: var(--color-error);
+        border: 1px solid color-mix(in srgb, var(--color-error) 30%, transparent);
+    }
+
+    &--info,
+    &--processing {
+        background-color: color-mix(in srgb, var(--color-info) 15%, transparent);
+        color: var(--color-info);
+        border: 1px solid color-mix(in srgb, var(--color-info) 30%, transparent);
+    }
+
+    &--neutral {
+        background-color: color-mix(in srgb, var(--text-muted) 15%, transparent);
+        color: var(--text-muted);
+        border: 1px solid color-mix(in srgb, var(--text-muted) 30%, transparent);
+    }
+
+    // =========================================================================
+    // Size Variants
+    // =========================================================================
+
+    &--sm {
+        padding: 2px var(--space-2);
+        font-size: 10px;
+    }
+
+    &--lg {
+        padding: var(--space-2) var(--space-4);
+        font-size: var(--text-sm);
+    }
+}
+
+// Dot indicator
+.status-badge__dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: var(--radius-full);
+    background-color: currentColor;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+.status-badge__icon {
+    font-size: 1rem;
+}
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}

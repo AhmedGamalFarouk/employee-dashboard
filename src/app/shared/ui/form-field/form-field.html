@@ -1,0 +1,18 @@
+<div class="form-group">
+    @if (label) {
+    <label [for]="id" class="form-label" [class.form-label--required]="required">
+        {{ label }}
+    </label>
+    }
+
+    <input [id]="id" [type]="type" [class]="inputClasses" [placeholder]="placeholder" [disabled]="disabled"
+        [value]="value" (input)="onInputChange($event)" (blur)="onTouched()" />
+
+    @if (error) {
+    <span class="form-error">{{ error }}</span>
+    }
+
+    @if (hint && !error) {
+    <span class="form-hint">{{ hint }}</span>
+    }
+</div>

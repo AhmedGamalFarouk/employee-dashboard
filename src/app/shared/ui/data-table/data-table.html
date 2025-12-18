@@ -1,0 +1,87 @@
+<div class="data-table-panel">
+    <!-- Panel Header -->
+    <div class="data-table-panel__header">
+        <div class="data-table-panel__header-left">
+            @if (icon) {
+            <span class="material-symbols-outlined data-table-panel__icon">{{ icon }}</span>
+            }
+            <div class="data-table-panel__header-text">
+                @if (title) {
+                <h3 class="data-table-panel__title">{{ title }}</h3>
+                }
+                @if (subtitle) {
+                <p class="data-table-panel__subtitle">{{ subtitle }}</p>
+                }
+            </div>
+        </div>
+        <div class="data-table-panel__header-actions">
+            <ng-container *ngTemplateOutlet="headerActionsTemplate"></ng-container>
+        </div>
+    </div>
+
+    <!-- Filters Row -->
+    @if (showSearch || filters.length > 0) {
+    <div class="data-table-panel__filters">
+        @if (showSearch) {
+        <div class="data-table-panel__filter data-table-panel__filter--search">
+            <div class="data-table-panel__search-wrapper">
+                <span class="material-symbols-outlined data-table-panel__search-icon">search</span>
+                <input type="text" class="data-table-panel__search-input" [placeholder]="searchPlaceholder"
+                    [value]="searchValue" (input)="onSearchInput($event)">
+            </div>
+        </div>
+        }
+        @for (filter of filters; track filter.key) {
+        <div class="data-table-panel__filter">
+            @if (filter.type === 'select') {
+            <select class="data-table-panel__filter-input" [value]="filterValues[filter.key] || ''"
+                (change)="onFilterInput(filter.key, $event)">
+                <option value="">{{ filter.placeholder }}</option>
+                @for (option of filter.options; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+                }
+            </select>
+            } @else {
+            <input type="text" class="data-table-panel__filter-input" [placeholder]="filter.placeholder"
+                [value]="filterValues[filter.key] || ''" (input)="onFilterInput(filter.key, $event)">
+            }
+        </div>
+        }
+    </div>
+    }
+
+    <!-- Table Content (projected) -->
+    <div class="data-table-panel__content">
+        <ng-container *ngTemplateOutlet="tableContentTemplate"></ng-container>
+        <ng-content></ng-content>
+    </div>
+
+    <!-- Footer with Pagination -->
+    @if (showPagination && totalItems > 0) {
+    <div class="data-table-panel__footer">
+        <div class="data-table-panel__footer-info">
+            Showing <span class="data-table-panel__highlight">{{ startItem }}-{{ endItem }}</span>
+            of <span class="data-table-panel__highlight">{{ totalItems }}</span> items
+        </div>
+        <div class="data-table-panel__footer-actions">
+            <ng-container *ngTemplateOutlet="footerActionsTemplate"></ng-container>
+        </div>
+        <div class="data-table-panel__pagination">
+            <button class="data-table-panel__page-btn" [disabled]="currentPage === 1" (click)="previousPage()">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            @for (page of getPageNumbers(); track page) {
+            <button class="data-table-panel__page-btn" [class.data-table-panel__page-btn--active]="page === currentPage"
+                (click)="goToPage(page)">
+                {{ page }}
+            </button>
+            }
+            @if (totalPages > 5 && currentPage < totalPages - 2) { <span class="data-table-panel__ellipsis">...</span>
+                }
+                <button class="data-table-panel__page-btn" [disabled]="currentPage === totalPages" (click)="nextPage()">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+        </div>
+    </div>
+    }
+</div>

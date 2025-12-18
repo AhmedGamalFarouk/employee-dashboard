@@ -1,0 +1,450 @@
+// =============================================================================
+// Data Table Panel Component Styles (Global via ViewEncapsulation.None)
+// =============================================================================
+// A modular table container with header, search, filters, and pagination.
+// Uses global tokens from _global-tokens.scss
+// =============================================================================
+
+ui-data-table {
+    display: block;
+}
+
+// =============================================================================
+// Panel Container
+// =============================================================================
+
+.data-table-panel {
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+// =============================================================================
+// Panel Header
+// =============================================================================
+
+.data-table-panel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-6);
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.data-table-panel__header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.data-table-panel__icon {
+    font-size: 1.75rem;
+    color: var(--action-primary);
+    background: color-mix(in srgb, var(--action-primary) 15%, transparent);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-table-panel__header-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.data-table-panel__title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.data-table-panel__subtitle {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.data-table-panel__header-actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+// =============================================================================
+// Filters Row
+// =============================================================================
+
+.data-table-panel__filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-6);
+    background: color-mix(in srgb, var(--bg-primary) 30%, transparent);
+    border-bottom: 1px solid var(--border-color);
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: 2fr repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+
+.data-table-panel__filter {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.data-table-panel__filter--search {
+    grid-column: span 2;
+
+    @media (min-width: 1024px) {
+        grid-column: span 1;
+    }
+}
+
+// Search Input
+.data-table-panel__search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.data-table-panel__search-icon {
+    position: absolute;
+    left: var(--space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    pointer-events: none;
+}
+
+.data-table-panel__search-input {
+    width: 100%;
+    height: var(--input-height);
+    padding: 0 var(--space-4) 0 2.5rem;
+    font-size: var(--text-sm);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    transition: var(--transition-base);
+
+    &::placeholder {
+        color: var(--text-muted);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--action-primary);
+        box-shadow: var(--focus-ring);
+    }
+}
+
+// Filter Input
+.data-table-panel__filter-input {
+    width: 100%;
+    height: var(--input-height);
+    padding: 0 var(--space-3);
+    font-size: var(--text-sm);
+    text-align: center;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    transition: var(--transition-base);
+
+    &::placeholder {
+        color: var(--text-muted);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--action-primary);
+        box-shadow: var(--focus-ring);
+    }
+}
+
+// =============================================================================
+// Table Content Area
+// =============================================================================
+
+.data-table-panel__content {
+    flex: 1;
+    overflow: hidden;
+
+    // Remove nested table-container borders when inside panel
+    .table-container {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+// =============================================================================
+// Panel Footer / Pagination
+// =============================================================================
+
+.data-table-panel__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-6);
+    border-top: 1px solid var(--border-color);
+    background: color-mix(in srgb, var(--bg-primary) 30%, transparent);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.data-table-panel__footer-info {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.data-table-panel__highlight {
+    color: var(--action-primary);
+    font-weight: var(--font-semibold);
+}
+
+.data-table-panel__footer-actions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.data-table-panel__pagination {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.data-table-panel__page-btn {
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 var(--space-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    cursor: pointer;
+    transition: var(--transition-base);
+
+    .material-symbols-outlined {
+        font-size: 1.125rem;
+    }
+
+    &:hover:not(:disabled) {
+        background: var(--hover-overlay);
+        border-color: var(--action-primary);
+        color: var(--action-primary);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &--active {
+        background: var(--action-primary);
+        border-color: var(--action-primary);
+        color: var(--bg-primary);
+
+        &:hover:not(:disabled) {
+            background: var(--action-hover);
+            color: var(--bg-primary);
+        }
+    }
+}
+
+.data-table-panel__ellipsis {
+    color: var(--text-muted);
+    padding: 0 var(--space-2);
+}
+
+// =============================================================================
+// Base Table Styles (Global)
+// =============================================================================
+// These styles are also available globally for use with native HTML tables
+
+.table-container {
+    width: 100%;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+// Table Header
+.data-table__header {
+    background-color: var(--action-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table__header-row {
+    color: var(--bg-primary);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: var(--font-semibold);
+}
+
+.data-table__th {
+    padding: var(--space-4) var(--space-6);
+    font-weight: var(--font-bold);
+    white-space: nowrap;
+
+    &--center {
+        text-align: center;
+    }
+
+    &--right {
+        text-align: right;
+    }
+
+    &--checkbox {
+        width: 60px;
+        text-align: center;
+    }
+
+    &--sortable {
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+// Table Body
+.data-table__body {
+    font-size: var(--text-sm);
+
+    tr {
+        transition: var(--transition-fast);
+
+        &:hover td {
+            background-color: var(--hover-overlay);
+        }
+    }
+
+    tr:not(:last-child) {
+        border-bottom: 1px solid color-mix(in srgb, var(--border-color) 50%, transparent);
+    }
+}
+
+// Table Row
+.data-table__row {
+    cursor: pointer;
+    transition: var(--transition-base);
+
+    &:hover {
+        background: var(--hover-overlay);
+    }
+
+    &--selected {
+        background: var(--active-overlay) !important;
+
+        td {
+            border-color: color-mix(in srgb, var(--action-primary) 20%, transparent);
+        }
+    }
+
+    &--clickable {
+        cursor: pointer;
+    }
+}
+
+// Table Cells
+.data-table__td {
+    padding: var(--space-4) var(--space-6);
+    vertical-align: middle;
+
+    &--muted {
+        color: var(--text-muted);
+    }
+
+    &--mono {
+        font-family: var(--font-mono);
+    }
+
+    &--center {
+        text-align: center;
+    }
+
+    &--right {
+        text-align: right;
+    }
+
+    &--checkbox {
+        width: 60px;
+        text-align: center;
+    }
+
+    &--primary {
+        font-weight: var(--font-semibold);
+        color: var(--text-primary);
+    }
+
+    &--truncate {
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+// =============================================================================
+// Legacy Table Footer (for backwards compatibility)
+// =============================================================================
+
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-6);
+    border-top: 1px solid var(--border-color);
+    background: color-mix(in srgb, var(--bg-primary) 30%, transparent);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.table-footer__info {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+
+    .highlight {
+        color: var(--action-primary);
+        font-weight: var(--font-semibold);
+    }
+}
+
+.table-footer__actions {
+    display: flex;
+    gap: var(--space-2);
+}

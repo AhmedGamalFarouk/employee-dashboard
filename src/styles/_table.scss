@@ -1,15 +1,16 @@
 // =============================================================================
-// Table Styles - Data Table Component
+// Table Styles (Consolidated)
 // =============================================================================
-
-@use 'variables' as *;
+// All table styling uses CSS custom properties from _global-tokens.scss
+// Includes base table, extensions, and footer styles
+// =============================================================================
 
 // Table Container
 .table-container {
     width: 100%;
-    background-color: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: $border-radius-lg; // Less circular border radius (12px)
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -28,21 +29,21 @@
 
 // Table Header
 .data-table__header {
-    background-color: var(--primary);
-    border-bottom: 1px solid var(--border);
+    background-color: var(--action-primary);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .data-table__header-row {
-    color: var(--primary-content);
-    font-size: 0.75rem;
+    color: var(--bg-primary);
+    font-size: var(--text-xs);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-weight: 600;
+    font-weight: var(--font-semibold);
 }
 
 .data-table__th {
-    padding: $spacing-4 $spacing-6;
-    font-weight: 700;
+    padding: var(--space-4) var(--space-6);
+    font-weight: var(--font-bold);
 
     &--center {
         text-align: center;
@@ -51,27 +52,70 @@
     &--right {
         text-align: right;
     }
+
+    &--checkbox {
+        width: 60px;
+        text-align: center;
+    }
+
+    &--sortable {
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &--actions {
+        width: 100px;
+        text-align: center;
+    }
 }
 
 // Table Body
 .data-table__body {
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
 
     tr {
-        transition: $transition-colors;
+        transition: var(--transition-fast);
 
         &:hover td {
-            background-color: var(--table-row-hover);
+            background-color: var(--hover-overlay);
         }
     }
 
     tr:not(:last-child) {
-        border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+        border-bottom: 1px solid color-mix(in srgb, var(--border-color) 50%, transparent);
     }
 }
 
+// Table Row (for selectable rows)
+.data-table__row {
+    cursor: pointer;
+    transition: var(--transition-base);
+
+    &:hover {
+        background: var(--hover-overlay);
+    }
+
+    &--selected {
+        background: var(--active-overlay) !important;
+
+        td {
+            border-color: color-mix(in srgb, var(--action-primary) 20%, transparent);
+        }
+    }
+
+    &--clickable {
+        cursor: pointer;
+    }
+}
+
+// Table Cells
 .data-table__td {
-    padding: $spacing-4 $spacing-6;
+    padding: var(--space-4) var(--space-6);
+    vertical-align: middle;
 
     &--muted {
         color: var(--text-muted);
@@ -88,4 +132,106 @@
     &--right {
         text-align: right;
     }
+
+    &--checkbox {
+        width: 60px;
+        text-align: center;
+    }
+
+    &--primary {
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    &--truncate {
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+// Table Footer (Pagination)
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-6);
+    border-top: 1px solid var(--border-color);
+    background: color-mix(in srgb, var(--bg-primary) 30%, transparent);
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.table-footer__info {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+
+    .highlight {
+        color: var(--action-primary);
+        font-weight: 600;
+    }
+}
+
+.table-footer__actions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.table-footer__pagination {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.table-footer__page-btn {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 var(--space-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover:not(:disabled) {
+        background: var(--hover-overlay);
+        border-color: var(--action-primary);
+        color: var(--action-primary);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &--active {
+        background: var(--action-primary);
+        border-color: var(--action-primary);
+        color: white;
+
+        &:hover:not(:disabled) {
+            background: var(--action-hover);
+            color: white;
+        }
+    }
+}
+
+// Table Empty State
+.data-table__empty {
+    padding: var(--space-8);
+    text-align: center;
+    color: var(--text-muted);
+}
+
+// Table Container Override (when inside a panel)
+.inventory-panel .table-container,
+.data-panel .table-container {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
 }

@@ -1,0 +1,32 @@
+<div class="panel">
+    <header class="panel-header">
+        <div class="panel-header__left">
+            @if (icon) {
+            <span [class]="iconClasses">
+                <span class="material-symbols-outlined">{{ icon }}</span>
+            </span>
+            }
+            <div class="panel-header__text">
+                @if (title) {
+                <h3 class="panel-title">{{ title }}</h3>
+                }
+                @if (subtitle) {
+                <p class="panel-subtitle">{{ subtitle }}</p>
+                }
+            </div>
+        </div>
+        <div class="panel-header__actions">
+            <ng-content select="[panel-actions]"></ng-content>
+        </div>
+    </header>
+
+    <div class="panel-body">
+        <ng-content></ng-content>
+    </div>
+
+    @if (showFooter) {
+    <footer class="panel-footer">
+        <ng-content select="[panel-footer]"></ng-content>
+    </footer>
+    }
+</div>
