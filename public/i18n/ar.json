@@ -1,0 +1,56 @@
+{
+  "dir": "rtl",
+  "HOME": "الرئيسية",
+  "PURCHASE": "شراء",
+  "INVENTORY": "المخزن",
+  "PATCHNO": "رقم الشراء",
+  "DATE": "التاريخ",
+  "VENDOR": "المورد",
+  "CATEGORY": "الفئة",
+  "ITEM_CODE": "رمز العنصر",
+  "ITEM_NAME": "اسم العنصر",
+  "PRICE": "السعر",
+  "QUANTITY": "الكمية",
+  "DISCOUNT": "الخصم",
+  "ADD": " إضافة",
+  "UPDATE": "تحديث",
+  "EMPLOYEES": "الموظفين",
+  "ATTENDANCE": "حضور و انصرف",
+  "MANAGE_EMPLOYEES": "ادارة الموظفين",
+  "inventory": {
+    "WASTAGE_REPORT": "تقرير الهدر",
+    "INVENTORY_PENDING": "أضف إلى المخزون "
+  },
+  "employee": {
+    "#": "م",
+    "NAME": "اسم الموظف",
+    "CODE": "كود الموظف",
+    "PHONE": "رقم الهاتف",
+    "EMAIL": "البريد الالكتروني",
+    "ADD": "اضافة موظف",
+    "ACTION": "اجـراء",
+    "ADD_EMPLOYEE": "اضـافة موظف"
+  },
+  "Purchase": {
+    "PURCHASE_ORDER": "أمر شراء",
+    "SUPPLY_ORDER": "أمر توريد",
+    "ITEM_ISSUE": "صرف صنف",
+    "RECEIPT_REPORT": "تقرير استلام"
+  },
+  "add_employee": {
+    "NAME": "الاسم",
+    "CODE": "الكود",
+    "NATIONAL_ID": "الرقم القومي",
+    "PHONE_NO": "رقم الهاتف",
+    "EMAIL_ADDRESS": "البريد الإلكتروني",
+    "JOB_TITLE": "المسمى الوظيفي",
+    "GENDER": "النوع",
+    "DATE_BIRTH": "تاريخ الميلاد",
+    "CORP_CODE": "كود المؤسسة",
+    "IMAGE": "الصورة",
+    "ADD": "إضافة",
+    "SELECT": "اختر",
+    "MALE": "ذكر",
+    "FEMALE": "انثي"
+  }
+}

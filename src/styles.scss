@@ -7,6 +7,7 @@
 
 // 1. Variables - Design tokens and configuration
 @use 'styles/variables' as *;
+// @use 'styles/global-tokens' as *;
 
 // 2. Base - Reset and global defaults
 @use 'styles/base';

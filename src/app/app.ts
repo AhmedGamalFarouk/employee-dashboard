@@ -1,10 +1,11 @@
 import { Component, signal, OnInit, inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, CommonModule, RouterLink, RouterLinkActive, TranslateModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -18,6 +19,9 @@ export class App implements OnInit {
   protected isSidebarLocked = signal(false);
 
   private platformId = inject(PLATFORM_ID);
+
+  private language = signal(localStorage.getItem("lang") || "ar");
+  private translate = inject(TranslateService);
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -47,6 +51,10 @@ export class App implements OnInit {
           }
         }
       });
+
+      if (localStorage.getItem("lang")) {
+        this.setLanguage(localStorage.getItem("lang")!)
+      }
     }
   }
 
@@ -68,5 +76,16 @@ export class App implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('sidebarLocked', this.isSidebarLocked() ? 'true' : 'false');
     }
+  }
+
+  changeLanguage() {
+    this.language() === "ar" ? this.language.set("en") : this.language.set("ar");
+    this.setLanguage(this.language());
+    localStorage.setItem("lang", this.language())
+  }
+  setLanguage(lang = "ar") {
+    const language = this.language();
+    this.translate.use(language as string);
+    document.documentElement.dir = this.language() === "ar" ? 'rtl' : 'ltr';
   }
 }

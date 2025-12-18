@@ -1,0 +1,56 @@
+{
+  "dir": "ltr",
+  "HOME": "Home",
+  "PURCHASE": "Purchase",
+  "INVENTORY": "Inventory",
+  "PATHNO": "PO no.",
+  "DATE": "Date",
+  "VENDOR": "Vendor",
+  "CATEGORY": "Category",
+  "ITEM_CODE": "Item Code",
+  "ITEM_NAME": "Item Name",
+  "PRICE": "Price",
+  "QUANTITY": "Quantity",
+  "DISCOUNT": "Discount",
+  "ADD": "Add Item",
+  "UPDATE": "Update",
+  "EMPLOYEES": "Employees",
+  "ATTENDANCE": "Attendance and Leave",
+  "MANAGE_EMPLOYEES": "Manage Employees",
+  "inventory": {
+    "WASTAGE_REPORT": "Wastage Report",
+    "INVENTORY_PENDING": "Inventory Adding"
+  },
+  "employee": {
+    "#": "#",
+    "NAME": "Employee Name",
+    "CODE": "Employee Code",
+    "PHONE": "Phone No.",
+    "EMAIL": "Email Address",
+    "ADD": "Add Employee",
+    "ACTION": "Action",
+    "ADD_EMPLOYEE": "Add Employee"
+  },
+  "Purchase": {
+    "PURCHASE_ORDER": "Purchase Order",
+    "SUPPLY_ORDER": "Supply Order",
+    "ITEM_ISSUE": "Item Issue",
+    "RECEIPT_REPORT": "Receipt Report"
+  },
+  "add_employee": {
+    "NAME": "Name",
+    "CODE": "Code",
+    "NATIONAL_ID": "National Id",
+    "PHONE_NO": "Phone Number",
+    "EMAIL_ADDRESS": "Email Address",
+    "JOB_TITLE": "Job Title",
+    "GENDER": "Gender",
+    "DATE_BIRTH": "Date of Birth",
+    "CORP_CODE": "Organization Code",
+    "IMAGE": "Image",
+    "ADD": "ADD",
+    "SELECT": "Select",
+    "MALE": "Male",
+    "FEMALE": "Female"
+  }
+}

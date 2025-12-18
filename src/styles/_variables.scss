@@ -6,59 +6,59 @@
 // CSS Custom Properties for Theme Switching
 // =============================================================================
 :root {
-    // Sidebar width
-    --sidebar-width: 18rem;
-    --sidebar-collapsed-width: 4.5rem;
+  // Sidebar width
+  --sidebar-width: 18rem;
+  --sidebar-collapsed-width: 4.5rem;
 
-    // Default theme is dark
-    --background: #0A1D3A;
-    --surface: #152B4D;
-    --primary: #4FC3F7;
-    --primary-content: #000000;
-    --text: #E0F2F7;
-    --text-muted: #90CAF9;
-    --border: #2A466F;
-    --table-row-hover: #1A345E;
+  // Default theme is dark
+  --background: #0a1d3a;
+  --surface: #152b4d;
+  --primary: #4fc3f7;
+  --primary-content: #000000;
+  --text: #e0f2f7;
+  --text-muted: #90caf9;
+  --border: #2a466f;
+  --table-row-hover: #1a345e;
 
-    // Status Colors
-    --status-active: #4ADE80; // distinct green
-    --status-offline: #64B5F6;
-    --status-leave: #FFCA28;
+  // Status Colors
+  --status-active: #4ade80; // distinct green
+  --status-offline: #64b5f6;
+  --status-leave: #ffca28;
 
-    // Location Colors
-    --location-blue: #60A5FA;
-    --location-orange: #FB923C;
-    --location-purple: #A78BFA;
+  // Location Colors
+  --location-blue: #60a5fa;
+  --location-orange: #fb923c;
+  --location-purple: #a78bfa;
 
-    // Shadows
-    --shadow-primary: 0 0 15px rgba(79, 195, 247, 0.3);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  // Shadows
+  --shadow-primary: 0 0 15px rgba(79, 195, 247, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
 }
 
 // Light Theme
-:root[data-theme="light"] {
-    --background: #F0F4F8;
-    --surface: #FFFFFF;
-    --primary: #0288D1;
-    --primary-content: #FFFFFF;
-    --text: #1A1A2E;
-    --text-muted: #64748B;
-    --border: #E2E8F0;
-    --table-row-hover: #F8FAFC;
+:root[data-theme='light'] {
+  --background: #f0f4f8;
+  --surface: #ffffff;
+  --primary: #0288d1;
+  --primary-content: #ffffff;
+  --text: #1a1a2e;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --table-row-hover: #f8fafc;
 
-    // Status Colors (slightly darker for light mode)
-    --status-active: #16A34A; // distinct green
-    --status-offline: #42A5F5;
-    --status-leave: #F59E0B;
+  // Status Colors (slightly darker for light mode)
+  --status-active: #16a34a; // distinct green
+  --status-offline: #42a5f5;
+  --status-leave: #f59e0b;
 
-    // Location Colors
-    --location-blue: #3B82F6;
-    --location-orange: #F97316;
-    --location-purple: #8B5CF6;
+  // Location Colors
+  --location-blue: #3b82f6;
+  --location-orange: #f97316;
+  --location-purple: #8b5cf6;
 
-    // Shadows
-    --shadow-primary: 0 0 15px rgba(2, 136, 209, 0.2);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  // Shadows
+  --shadow-primary: 0 0 15px rgba(2, 136, 209, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 // =============================================================================
