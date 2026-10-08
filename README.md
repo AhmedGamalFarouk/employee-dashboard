@@ -1,59 +1,67 @@
-# EmployeeDashboard
+# Employee Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+An ERP-style admin front end built with **Angular 21** and **TypeScript**. It covers three business screens (employee attendance, buy orders and warehouse stock) built on a small in-house UI kit, with English and Arabic translation files wired in through ngx-translate.
 
-## Development server
+The data is mocked in the components, so the project focuses on the front-end layer: reusable components, content projection, typed models and a token-based SCSS design system.
 
-To start a local development server, run:
+## Screens
 
-```bash
-ng serve
-```
+| Route | Screen | What it shows |
+| :--- | :--- | :--- |
+| `/dashboard` | Current employees | Searchable, paginated attendance table with check-in/out times, locations and status badges |
+| `/buy-orders` | Buy orders | Order items table with search, PG/colour/size/shade filters and a create-order modal |
+| `/warehouse` | Warehouse | Stock items with dimensions, reorder levels, required vs. available quantities, bulk selection and an item details modal |
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Shared UI kit
 
-## Code scaffolding
+Everything under `src/app/shared/ui` is a standalone component exported from one barrel (`shared/ui/index.ts`), so screens import only what they use:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **`ui-data-table`**: panel, search box, configurable filters (`FilterConfig[]`), pagination, and three projected slots (`#headerActions`, `#tableContent`, `#footerActions`) so each screen supplies its own rows and actions.
+- **`ui-modal`**, **`ui-button`**, **`ui-card`**, **`ui-panel`**, **`ui-form-field`**, **`ui-status-badge`**: the building blocks the screens compose.
 
-```bash
-ng generate component component-name
-```
+## Styling and i18n
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- SCSS split into partials under `src/styles/`: global design tokens, base, layout, table, patterns and utilities, using BEM class names (`data-table__th--center`).
+- `@ngx-translate/core` is configured with an HTTP loader for `public/i18n/en.json` and `public/i18n/ar.json`; moving the remaining hard-coded template strings onto the `translate` pipe is the next step.
 
-```bash
-ng generate --help
-```
+## Tech stack
 
-## Building
+Angular 21 (standalone components, new control flow) · TypeScript · RxJS · SCSS · ngx-translate · Vitest
 
-To build the project run:
+## Getting started
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Requires Node.js 20+.
 
 ```bash
-ng test
+git clone https://github.com/AhmedGamalFarouk/employee-dashboard.git
+cd employee-dashboard
+npm install
+npm start          # ng serve, then open http://localhost:4200
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Other scripts:
 
 ```bash
-ng e2e
+npm run build      # production build into dist/
+npm test           # unit tests with Vitest
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Project structure
 
-## Additional Resources
+```
+src/
+├── app/
+│   ├── dashboard/        # employee attendance screen
+│   ├── buy-orders/       # buy orders screen
+│   ├── warehouse/        # warehouse stock screen
+│   ├── shared/ui/        # reusable UI kit (data table, modal, button, ...)
+│   ├── app.routes.ts
+│   └── app.config.ts     # router, HttpClient, translation providers
+├── styles/               # design tokens and SCSS partials
+public/
+└── i18n/                 # en.json, ar.json
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Author
+
+**Ahmed Gamal Farouk**, Front-End & Cross-Platform Mobile Developer · [GitHub](https://github.com/AhmedGamalFarouk) · [LinkedIn](https://www.linkedin.com/in/ahmed-gamal-farouk)
